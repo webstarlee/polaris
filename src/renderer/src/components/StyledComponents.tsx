@@ -38,7 +38,7 @@ export const CustomButton = styled(Button)(() => ({
       left: '100%'
     }
   },
-  '&::before': {
+  '&:before': {
     content: '" "',
     position: 'absolute',
     top: 0,
@@ -51,8 +51,42 @@ export const CustomButton = styled(Button)(() => ({
 }))
 
 export const CustomTextField = styled(TextField)(() => ({
-  '& .MuiInputBase-input': {
-    height: '44px',
-    padding: '5px 14px'
+  '&>.MuiFormLabel-root': {
+    display: 'none'
+  },
+  '&>.MuiInputBase-root': {
+    color: 'rgba(255,255,255,.75)',
+    '&>input': {
+      padding: '0px',
+      height: '50px',
+      fontSize: '16px'
+    },
+    '&>fieldset.MuiOutlinedInput-notchedOutline': {
+      borderWidth: '1px',
+      borderRadius: '4px',
+      top: '0px',
+      '&>legend': {
+        display: 'none'
+      },
+      '&:before': {
+        content: '" "',
+        position: 'absolute',
+        top: 0,
+        left: '-100%',
+        width: '100%',
+        height: '100%',
+        background: 'linear-gradient(145deg, transparent, rgba(255, 255, 255, 0.4), transparent)',
+        transition: 'all 450ms'
+      }
+    },
+    '&>input:focus + fieldset.MuiOutlinedInput-notchedOutline': {
+      boxShadow: '1px 1px 10px 4px #595961',
+      '&:before': {
+        left: '100%'
+      }
+    },
+    '&:focus-within': {
+      backgroundColor: 'rgba(144, 202, 249, 0.08)'
+    }
   }
 }))

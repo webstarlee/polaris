@@ -46,7 +46,7 @@ export const FormLeftBox = styled(Box)(({ theme }) => ({
 }))
 
 export const AuthLogoImg = styled('img')(() => ({
-  width: '90%'
+  width: '100%'
 }))
 
 export const FormRightBox = styled(Box)(({ theme }) => ({
@@ -63,7 +63,7 @@ export const FormBottomBox = styled(Box)(() => ({
   position: 'absolute',
   backgroundColor: '#343541',
   bottom: '50px',
-  right: '-45px',
+  right: '-50px',
   border: 'solid 1px #343541',
   borderRadius: '20px',
   display: 'flex',

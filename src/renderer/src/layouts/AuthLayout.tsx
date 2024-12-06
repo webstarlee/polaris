@@ -58,7 +58,6 @@ const AuthLayout: React.FC = () => {
                 >
                   <Typography
                     sx={{
-                      fontFamily: 'SatoshiBold',
                       color: '#000',
                       fontSize: '24px',
                       textAlign: 'center'
@@ -68,7 +67,6 @@ const AuthLayout: React.FC = () => {
                   </Typography>
                   <Typography
                     sx={{
-                      fontFamily: 'SatoshiRegular',
                       color: '#aab0b6',
                       fontSize: '13px',
                       textAlign: 'center'

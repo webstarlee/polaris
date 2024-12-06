@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { Box, TextField } from '@mui/material'
+import { Box, InputAdornment } from '@mui/material'
 import { useAuth } from '@renderer/hooks/AuthContext'
 import { CustomButton, CustomTextField } from '@renderer/components/StyledComponents'
+import AccountCircle from '@mui/icons-material/AccountCircle'
+import LockIcon from '@mui/icons-material/Lock'
 
 const Login: React.FC = () => {
   const { login } = useAuth()
@@ -15,7 +17,7 @@ const Login: React.FC = () => {
   }
 
   return (
-    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 0 }}>
       <CustomTextField
         margin="normal"
         required
@@ -24,8 +26,19 @@ const Login: React.FC = () => {
         label="Username"
         name="username"
         autoFocus
+        sx={{ mb: 1, mt: 2 }}
+        slotProps={{
+          input: {
+            startAdornment: (
+              <InputAdornment position="start">
+                <AccountCircle />
+              </InputAdornment>
+            )
+          }
+        }}
+        placeholder="Username"
       />
-      <TextField
+      <CustomTextField
         margin="normal"
         required
         fullWidth
@@ -34,6 +47,17 @@ const Login: React.FC = () => {
         type="password"
         id="password"
         autoComplete="current-password"
+        sx={{ mt: 3, mb: 1 }}
+        slotProps={{
+          input: {
+            startAdornment: (
+              <InputAdornment position="start">
+                <LockIcon />
+              </InputAdornment>
+            )
+          }
+        }}
+        placeholder="Password"
       />
       <CustomButton
         className="custom-btn"
@@ -41,7 +65,7 @@ const Login: React.FC = () => {
         type="submit"
         fullWidth
         variant="outlined"
-        sx={{ mt: 3, mb: 2 }}
+        sx={{ mt: 3, mb: 1 }}
       >
         Sign In
       </CustomButton>
