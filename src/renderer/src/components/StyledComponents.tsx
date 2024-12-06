@@ -1,0 +1,58 @@
+import { styled, Box, Button, TextField } from '@mui/material'
+
+export const PageHeader = styled(Box)(() => ({
+  width: '100%',
+  height: '50px',
+  display: 'flex',
+  marginBottom: '10px',
+  flexDirection: 'column',
+  justifyContent: 'center'
+}))
+
+export const Card = styled(Box)(() => ({
+  width: '100%',
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  backgroundColor: '#F7F8FA',
+  padding: '15px',
+  borderRadius: '20px',
+  position: 'relative',
+  boxShadow: '1px 1px 5px 0px rgba(0,0,0,0.2)'
+}))
+
+export const CustomButton = styled(Button)(() => ({
+  textDecoration: 'none',
+  border: '1px solid rgb(99 100 109)',
+  position: 'relative',
+  overflow: 'hidden',
+  height: '44px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: '4px 0px 0px',
+  color: '#fff',
+  '&:hover': {
+    boxShadow: '1px 1px 10px 4px #595961',
+    '&:before': {
+      left: '100%'
+    }
+  },
+  '&::before': {
+    content: '" "',
+    position: 'absolute',
+    top: 0,
+    left: '-100%',
+    width: '100%',
+    height: '100%',
+    background: 'linear-gradient(145deg, transparent, rgba(255, 255, 255, 0.4), transparent)',
+    transition: 'all 450ms'
+  }
+}))
+
+export const CustomTextField = styled(TextField)(() => ({
+  '& .MuiInputBase-input': {
+    height: '44px',
+    padding: '5px 14px'
+  }
+}))
