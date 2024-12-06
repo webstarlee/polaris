@@ -1,10 +1,19 @@
 import React, { createContext, useContext, useState } from 'react'
 import { useEffectOnce } from './useEffectOnce'
 
+export interface UserProps {
+  username: string
+  is_admin: boolean
+  fullname: string
+}
+
 interface AuthContextType {
   authLoading: boolean
   isAuthenticated: boolean
-  login: () => void
+  authError: boolean
+  user: UserProps | undefined
+  updateError: (error: boolean) => void
+  login: (_user: UserProps) => void
   logout: () => void
   updateLoading: (loading: boolean) => void
 }
@@ -17,10 +26,13 @@ interface AuthProviderProps {
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [authLoading, setAuthLoading] = useState(true)
+  const [authLoading, setAuthLoading] = useState(false)
+  const [authError, setAuthError] = useState(false)
+  const [user, setUser] = useState<UserProps>({ username: '', is_admin: false, fullname: '' })
 
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  const login = () => {
+  const login = (_user: UserProps) => {
+    setUser(_user)
     setIsAuthenticated(true)
     sessionStorage.setItem('authToken', '0x7aff4c7265321e288A46be560c3A0aefdCe0421C')
     const expirationDate = new Date()
@@ -31,7 +43,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       expirationDate.toUTCString()
 
     document.cookie = 'authToken=' + cookieValue + '; path=/'
-    setAuthLoading(true)
     // setTimeout()
     setTimeout(() => {
       window.electron.ipcRenderer.send('toggle-fullscreen')
@@ -49,6 +60,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const updateLoading = (loading: boolean) => {
     setAuthLoading(loading)
+  }
+
+  const updateError = (error: boolean): void => {
+    setAuthError(error)
   }
 
   useEffectOnce(() => {
@@ -69,11 +84,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
+        user,
+        authError,
         authLoading,
         isAuthenticated,
         login,
         logout,
-        updateLoading
+        updateLoading,
+        updateError
       }}
     >
       {children}

@@ -20,7 +20,8 @@ import { motion } from 'motion/react'
 
 const AuthLayout: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true)
-  const { isAuthenticated } = useAuth()
+
+  const { isAuthenticated, authError } = useAuth()
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -35,6 +36,24 @@ const AuthLayout: React.FC = () => {
     window.electron.ipcRenderer.send('quit-app')
   }
 
+  console.log(authError)
+
+  const variants = {
+    shake: {
+      scale: 1,
+      x: [-3, 3, -3, 3, 0],
+      y: [-2, 2, -2, 2, 0],
+      transition: {
+        duration: 0.3,
+        repeat: 1
+      }
+    },
+    normal: {
+      scale: 1,
+      transition: { duration: 0.6, type: 'spring', bounce: 0.5 }
+    }
+  }
+
   return (
     <>
       {isLoading ? (
@@ -43,7 +62,8 @@ const AuthLayout: React.FC = () => {
         <AuthContainer sx={{ flexGrow: 1 }}>
           <motion.div
             initial={{ scale: 0 }}
-            animate={{ scale: 1, transition: { duration: 0.6, type: 'spring', bounce: 0.5 } }}
+            animate={[authError ? 'shake' : 'normal']}
+            variants={variants}
           >
             <FormContainer>
               <FormLeftBox className="movable">

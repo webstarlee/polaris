@@ -24,6 +24,7 @@ export const FormContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   border: 'solid 1px #343541',
   marginRight: '45px',
+  boxShadow: '2px 2px 10px 5px rgb(0 0 0 / 30%)',
   [theme.breakpoints.down('sm')]: {
     flexDirection: 'column'
   }
