@@ -1,4 +1,4 @@
-import { styled, Box, Drawer, ListItemButton, ListItemText } from '@mui/material'
+import { styled, Box, Drawer, ListItemButton, ListItemText, IconButton } from '@mui/material'
 
 const drawerWidth = 260
 
@@ -83,6 +83,11 @@ export const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open
   display: 'flex',
   flexDirection: 'column',
   flexGrow: 1,
+  overflow: 'hidden',
+  padding: '60px 0px 0px',
+  [theme.breakpoints.down('md')]: {
+    padding: '48px 0px 0px'
+  },
   transition: theme.transitions.create('margin', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen
@@ -100,7 +105,7 @@ export const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open
     marginLeft: 0
   }),
   backgroundColor: theme.palette.mode == 'dark' ? 'rgba(52, 53, 65, 1)' : '#fff',
-  minHeight: '100vh'
+  height: 'calc(100vh - 20px)'
 }))
 
 export const DesktopDrawer = styled(Drawer)(({ theme }) => ({
@@ -148,6 +153,25 @@ export const DrawerHeader = styled('div')(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     justifyContent: 'space-between'
   }
+}))
+
+export const StatusBar = styled('div')(() => ({
+  display: 'flex',
+  flexDirection: 'row',
+  width: '100%',
+  height: '20px',
+  position: 'absolute',
+  left: 0,
+  top: 0,
+  backgroundColor: '#000',
+  justifyContent: 'space-between',
+  padding: '0px 5px'
+}))
+
+export const StatusBarBtn = styled(IconButton)(() => ({
+  height: '20px',
+  width: '40px',
+  borderRadius: '0px'
 }))
 
 export const Logo = styled('img')(() => ({

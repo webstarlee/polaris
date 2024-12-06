@@ -90,3 +90,48 @@ export const CustomTextField = styled(TextField)(() => ({
     }
   }
 }))
+
+export const ChatContainerBox = styled(Box)(() => ({
+  width: '100%',
+  height: '100%',
+  position: 'relative',
+  display: 'flex',
+  flexDirection: 'column'
+}))
+
+export const MessageContainerBox = styled(Box)(() => ({
+  flex: 1,
+  width: '100%',
+  position: 'relative',
+  display: 'flex',
+  overflowX: 'hidden',
+  overflowY: 'auto',
+  scrollbarWidth: 'thin',
+  scrollbarColor: '#888 #fff',
+  '&::-webkit-scrollbar': {
+    background: 'transparent',
+    height: '8px',
+    width: '8px'
+  },
+  '&::-webkit-scrollbar-track': {
+    background: 'transparent'
+  },
+  '&::-webkit-scrollbar-thumb': {
+    borderRadius: '0.25rem',
+    background: 'rgb(148 163 184)'
+  },
+  '&::-webkit-scrollbar-thumb:hover': {
+    background: '#555'
+  },
+  '&::-webkit-scrollbar-button': {
+    display: 'none'
+  }
+}))
+
+export const InputContainerBox = styled(Box)(() => ({
+  height: '100px',
+  borderTop: 'solid 1px #ddd',
+  width: '100%',
+  position: 'relative',
+  display: 'flex'
+}))

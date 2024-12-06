@@ -161,6 +161,7 @@ const Sidebar: React.FC<SidebarProps> = ({ window }) => {
         }}
         sx={{
           display: { xs: 'block', sm: 'none' },
+          paddingTop: '20px',
           zIndex: 1201,
           '& .MuiDrawer-paper': {
             boxSizing: 'border-box',
@@ -220,7 +221,9 @@ const Sidebar: React.FC<SidebarProps> = ({ window }) => {
             width: drawerWidth,
             boxSizing: 'border-box',
             backgroundColor: 'rgba(32, 33, 35, 1)',
-            padding: '8px'
+            padding: '8px',
+            height: 'calc(100% - 20px)',
+            marginTop: '20px'
           }
         }}
         variant="persistent"

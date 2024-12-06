@@ -1,13 +1,18 @@
-import { Typography } from '@mui/material'
-import { PageHeader } from '@renderer/components/StyledComponents'
+import { Box } from '@mui/material'
+import {
+  ChatContainerBox,
+  MessageContainerBox,
+  InputContainerBox
+} from '@renderer/components/StyledComponents'
 
 const Home: React.FC = () => {
   return (
-    <>
-      <PageHeader>
-        <Typography sx={{ fontFamily: 'SatoshiBold', fontSize: '28px' }}>Welcome, Chino</Typography>
-      </PageHeader>
-    </>
+    <ChatContainerBox>
+      <MessageContainerBox>
+        <Box sx={{ height: '2000px' }}></Box>
+      </MessageContainerBox>
+      <InputContainerBox></InputContainerBox>
+    </ChatContainerBox>
   )
 }
 

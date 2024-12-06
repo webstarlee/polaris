@@ -23,10 +23,10 @@ const routes: RouteObject[] = [
       },
       {
         path: '/',
-        element: <Navigate to="/dashboard" replace />
+        element: <Navigate to="/chatgpt" replace />
       },
       {
-        path: '/dashboard',
+        path: '/chatgpt',
         element: (
           <Suspense fallback={<>...</>}>
             <Home />

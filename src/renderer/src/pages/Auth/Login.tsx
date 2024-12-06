@@ -10,7 +10,7 @@ import { db } from '@renderer/utils/firebase'
 import LoadingImg from '@renderer/assets/images/loading.svg'
 
 const Login: React.FC = () => {
-  const { updateError, login, authLoading, updateLoading } = useAuth()
+  const { authError, updateError, login, authLoading, updateLoading } = useAuth()
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     updateLoading(true)
@@ -25,6 +25,7 @@ const Login: React.FC = () => {
       const isMatch = await checkPassword(password, userData.password)
       if (isMatch) {
         const _user: UserProps = {
+          id: userDoc.id,
           username: userData.username,
           is_admin: userData.is_admin,
           fullname: userData.fullname
@@ -49,12 +50,10 @@ const Login: React.FC = () => {
     }
   }
 
-  console.log(authLoading)
-
   return (
     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 0 }}>
       <CustomTextField
-        margin="normal"
+        error={authError}
         required
         fullWidth
         id="username"
@@ -74,7 +73,7 @@ const Login: React.FC = () => {
         placeholder="Username"
       />
       <CustomTextField
-        margin="normal"
+        error={authError}
         required
         fullWidth
         name="password"

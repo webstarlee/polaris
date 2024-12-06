@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState } from 'react'
 import { useEffectOnce } from './useEffectOnce'
 
 export interface UserProps {
+  id: string
   username: string
   is_admin: boolean
   fullname: string
@@ -28,7 +29,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [authLoading, setAuthLoading] = useState(false)
   const [authError, setAuthError] = useState(false)
-  const [user, setUser] = useState<UserProps>({ username: '', is_admin: false, fullname: '' })
+  const [user, setUser] = useState<UserProps>({
+    id: '',
+    username: '',
+    is_admin: false,
+    fullname: ''
+  })
 
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const login = (_user: UserProps) => {
